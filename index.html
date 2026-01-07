@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Server Power Control</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                background-color: lightblue;
+                text-align: center;
+                font-family: "Rubik", sans-serif;
+                padding: 50px;
+            }
+            button {
+                margin: 10px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+                border-radius: 5px;
+            }
+            .btn-on {
+                background-color: green;
+                color: white;
+            }
+            .btn-off {
+                background-color: red;
+                color: white;
+            }
+            .success-message {
+                margin-top: 20px;
+                font-size: 20px;
+                color: green;
+                display: none;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+            }
+            .modal-content {
+                font-size: 16px;
+            }
+            .modal button {
+                padding: 10px 20px;
+                margin: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .modal button.confirm {
+                background-color: green;
+                color: white;
+            }
+            .modal button.cancel {
+                background-color: red;
+                color: white;
+            }
+            .modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+        </style>
+        <script>
+            let isOn = false;
+
+            function sendCommand(action) {
+                fetch("/" + action, { method: "POST" })
+                    .then((response) => response.text())
+                    .then((data) => {
+                        console.log(data);
+                        document.getElementById(
+                            "success-message",
+                        ).style.display = "block";
+                        setTimeout(() => {
+                            document.getElementById(
+                                "success-message",
+                            ).style.display = "none";
+                        }, 3000);
+                    })
+                    .catch((error) => console.error("Error:", error));
+            }
+
+            function showForceShutdownModal() {
+                document.getElementById("forceShutdownModal").style.display =
+                    "block";
+                document.getElementById("overlay").style.display = "block";
+            }
+
+            function showModal() {
+                document.getElementById("customModal").style.display = "block";
+                document.getElementById("overlay").style.display = "block";
+            }
+
+            function closeModal() {
+                document.getElementById("customModal").style.display = "none";
+                document.getElementById("forceShutdownModal").style.display =
+                    "none";
+                document.getElementById("overlay").style.display = "none";
+            }
+
+            function confirmOn() {
+                if (isOn) {
+                    showModal();
+                } else {
+                    sendCommand("on");
+                    isOn = true;
+                }
+            }
+
+            function modalConfirm() {
+                sendCommand("on");
+                isOn = true;
+                closeModal();
+            }
+
+            function modalCancel() {
+                closeModal();
+            }
+
+            function confirmOff() {
+                showForceShutdownModal();
+            }
+
+            function forceShutdownConfirm() {
+                sendCommand("off");
+                isOn = false;
+                closeModal();
+            }
+
+            function forceShutdownCancel() {
+                closeModal();
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Server Power Control</h2>
+        <p><button class="btn-on" onclick="confirmOn()">Turn On</button></p>
+        <p><button class="btn-off" onclick="confirmOff()">Turn Off</button></p>
+        <p id="success-message" class="success-message">Success!</p>
+
+        <!-- Custom Modal for "Turn On" Confirmation -->
+        <div
+            id="overlay"
+            class="modal-overlay"
+            style="display: none"
+            onclick="closeModal()"
+        ></div>
+        <div id="customModal" class="modal" style="display: none">
+            <div class="modal-content">
+                <p>
+                    The server's power button has already been pressed.
+                    Continue?
+                </p>
+                <button class="confirm" onclick="modalConfirm()">Yes</button>
+                <button class="cancel" onclick="modalCancel()">No</button>
+            </div>
+        </div>
+
+        <!-- Custom Modal for "Force Shutdown" Confirmation -->
+        <div id="forceShutdownModal" class="modal" style="display: none">
+            <div class="modal-content">
+                <p>
+                    Are you sure you want to FORCE SHUTDOWN the Server? (hold
+                    down the power button)
+                </p>
+                <button class="confirm" onclick="forceShutdownConfirm()">
+                    Yes
+                </button>
+                <button class="cancel" onclick="forceShutdownCancel()">
+                    No
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
