@@ -1,0 +1,66 @@
+body {
+    background-color: lightblue;
+    text-align: center;
+    font-family: "Rubik", sans-serif;
+    padding: 50px;
+}
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+.btn-on {
+    background-color: green;
+    color: white;
+}
+.btn-off {
+    background-color: red;
+    color: white;
+}
+.success-message {
+    margin-top: 20px;
+    font-size: 20px;
+    color: green;
+    display: none;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.modal-content {
+    font-size: 16px;
+}
+.modal button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.modal button.confirm {
+    background-color: green;
+    color: white;
+}
+.modal button.cancel {
+    background-color: red;
+    color: white;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
