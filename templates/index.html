@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Server Power Control</title>
+        <title>KillswitchPie</title>
         <link
             href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap"
             rel="stylesheet"
@@ -11,117 +11,8 @@
             rel="stylesheet"
             href="{{ url_for('static', filename='style.css') }}"
         />
-
-        <script>
-            let isOn = false;
-
-            function sendCommand(action) {
-                fetch("/" + action, { method: "POST" })
-                    .then((response) => response.text())
-                    .then((data) => {
-                        console.log(data);
-                        document.getElementById(
-                            "success-message",
-                        ).style.display = "block";
-                        setTimeout(() => {
-                            document.getElementById(
-                                "success-message",
-                            ).style.display = "none";
-                        }, 3000);
-                    })
-                    .catch((error) => console.error("Error:", error));
-            }
-
-            function showForceShutdownModal() {
-                document.getElementById("forceShutdownModal").style.display =
-                    "block";
-                document.getElementById("overlay").style.display = "block";
-            }
-
-            function showModal() {
-                document.getElementById("customModal").style.display = "block";
-                document.getElementById("overlay").style.display = "block";
-            }
-
-            function closeModal() {
-                document.getElementById("customModal").style.display = "none";
-                document.getElementById("forceShutdownModal").style.display =
-                    "none";
-                document.getElementById("overlay").style.display = "none";
-            }
-
-            function confirmOn() {
-                if (isOn) {
-                    showModal();
-                } else {
-                    sendCommand("on");
-                    isOn = true;
-                }
-            }
-
-            function modalConfirm() {
-                sendCommand("on");
-                isOn = true;
-                closeModal();
-            }
-
-            function modalCancel() {
-                closeModal();
-            }
-
-            function confirmOff() {
-                showForceShutdownModal();
-            }
-
-            function forceShutdownConfirm() {
-                sendCommand("off");
-                isOn = false;
-                closeModal();
-            }
-
-            function forceShutdownCancel() {
-                closeModal();
-            }
-        </script>
     </head>
     <body>
-        <h2>Server Power Control</h2>
-        <p><button class="btn-on" onclick="confirmOn()">Turn On</button></p>
-        <p><button class="btn-off" onclick="confirmOff()">Turn Off</button></p>
-        <p id="success-message" class="success-message">Success!</p>
-
-        <!-- Custom Modal for "Turn On" Confirmation -->
-        <div
-            id="overlay"
-            class="modal-overlay"
-            style="display: none"
-            onclick="closeModal()"
-        ></div>
-        <div id="customModal" class="modal" style="display: none">
-            <div class="modal-content">
-                <p>
-                    The server's power button has already been pressed.
-                    Continue?
-                </p>
-                <button class="confirm" onclick="modalConfirm()">Yes</button>
-                <button class="cancel" onclick="modalCancel()">No</button>
-            </div>
-        </div>
-
-        <!-- Custom Modal for "Force Shutdown" Confirmation -->
-        <div id="forceShutdownModal" class="modal" style="display: none">
-            <div class="modal-content">
-                <p>
-                    Are you sure you want to FORCE SHUTDOWN the Server? (hold
-                    down the power button)
-                </p>
-                <button class="confirm" onclick="forceShutdownConfirm()">
-                    Yes
-                </button>
-                <button class="cancel" onclick="forceShutdownCancel()">
-                    No
-                </button>
-            </div>
-        </div>
+        <h2>KillswitchPie</h2>
     </body>
 </html>
