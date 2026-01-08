@@ -1,6 +1,8 @@
-from flask import send_from_directory
+from flask import Flask, render_template
+
+app = Flask(__name__)
 
 
-@app.route("/static/")
-def serve_static(filename):
-    return send_from_directory("static", filename)
+@app.route("/")
+def index():
+    return render_template("index.html")
