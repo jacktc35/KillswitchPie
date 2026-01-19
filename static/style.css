@@ -27,3 +27,16 @@ body {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.on-btn {
+    margin-top: 80px;
+    background-color: 9CFF83;
+    font-weight: 600;
+    font: Rubik;
+    font-size: 20px;
+    text-align: right;
+    padding-right: 60px;
+    border-radius: 24px;
+    width: 250px;
+    height: 75px;
+}
