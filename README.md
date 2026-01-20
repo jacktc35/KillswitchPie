@@ -1,6 +1,4 @@
 
-
-# KillswitchPie
 <img width="4736" height="668" alt="KillswitchBanner" src="https://github.com/user-attachments/assets/b44c94d4-ecde-4c88-a4a9-568dd47a2d1a" />
 
 ## What is KillswitchPie?
