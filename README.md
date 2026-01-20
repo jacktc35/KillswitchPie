@@ -2,6 +2,7 @@
 
 # KillswitchPie
 <img width="4736" height="668" alt="KillswitchBanner" src="https://github.com/user-attachments/assets/b44c94d4-ecde-4c88-a4a9-568dd47a2d1a" />
+
 ## What is KillswitchPie?
 
 KillswitchPie is a web server designed to run on a low powered SBC that acts as a virtual power button to a real computer. In simple terms, you click the button on the site, the site tells the microcontroller (in this case, a Raspberry Pi Zero W) to turn on and off a relay accordingly, which is hooked up to the power button connections on a motherboard, shorting the connection and turning on/off the machine.
