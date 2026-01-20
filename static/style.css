@@ -32,10 +32,8 @@ body {
     margin-top: 80px;
     background-color: 9CFF83;
     font-weight: 600;
-    font: Rubik;
     font-size: 20px;
     text-align: right;
-    padding-right: 60px;
     border-radius: 24px;
     width: 250px;
     height: 75px;
@@ -56,4 +54,17 @@ body {
 
 .grey {
     color: #424242;
+}
+
+.on-img {
+    display: flex;
+    position: fixed;
+    align-items: left;
+    padding-left: 10px;
+    padding-top: 7px;
+}
+
+.on-div {
+    margin-left: 80px;
+    margin-right: 30px;
 }
