@@ -40,3 +40,20 @@ body {
     width: 250px;
     height: 75px;
 }
+
+.dangerzone {
+    background-color: f14132;
+    position: fixed;
+    top: 320;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.red {
+    color: f14132;
+}
+
+.grey {
+    color: #424242;
+}
