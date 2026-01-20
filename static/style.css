@@ -10,35 +10,6 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-
-.titlebar {
-    background-color: #f14132;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    border-radius: 0 0 70px 70px;
-}
-
-.titlebar-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.on-btn {
-    margin-top: 80px;
-    background-color: 9CFF83;
-    font-weight: 600;
-    font-size: 20px;
-    text-align: right;
-    border-radius: 24px;
-    width: 250px;
-    height: 75px;
-}
-
 .dangerzone {
     background-color: f14132;
     position: fixed;
@@ -56,7 +27,39 @@ body {
     color: #424242;
 }
 
-.on-img {
+/*==============Title Bar==============*/
+.titlebar {
+    background-color: #f14132;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 70px 70px;
+}
+
+.titlebar-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+/*=====================================*/
+
+/*================Button===============*/
+.btn {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: right;
+    border-radius: 24px;
+    width: 250px;
+    height: 75px;
+    cursor: pointer;
+    border: 0;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-img {
     display: flex;
     position: fixed;
     align-items: left;
@@ -64,7 +67,12 @@ body {
     padding-top: 7px;
 }
 
-.on-div {
+.btn-div {
     margin-left: 80px;
     margin-right: 30px;
 }
+
+.btn:hover {
+    filter: brightness(70%);
+}
+/*=====================================*/
