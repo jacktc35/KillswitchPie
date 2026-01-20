@@ -1,4 +1,12 @@
-# KillswitchPie
-### A Web Server that runs on a Raspberry Pi Zero W to allow hardware power button control remotely.
 
-<img width="1640" height="664" alt="Banner" src="https://github.com/user-attachments/assets/914fcd53-587e-4733-a423-a43143f11c45" />
+
+# KillswitchPie
+## What is KillswitchPie?
+KillswitchPie is a web server designed to run on a low powered SBC that acts as a virtual power button to a real computer. In simple terms, you click the button on the site, the site tells the microcontroller (in this case, a Raspberry Pi Zero W) to turn on and off a relay accordingly, which is hooked up to the power button connections on a motherboard, shorting the connection and turning on/off the machine.
+
+## Why?
+KSP was a quite niche use case for my needs. I am using consumer hardware to host a server, which is not designed to be up 24/7, only when needed. KSP is intended to fill the gap between a 24/7 server and having to be there in person to turn on your machine every time.
+
+## External Resources
+
+The Pi that I am currently using is at: https://thepihut.com/products/raspberry-pi-zero-w and the relay is at: https://thepihut.com/products/grove-relay.
